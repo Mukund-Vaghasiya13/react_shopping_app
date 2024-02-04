@@ -25,7 +25,6 @@ function Login() {
 
                 const RequestRes = response.data
                 if (RequestRes.success) {
-                    console.log(RequestRes)
                     dispatch(setToken({Token:RequestRes.data.token,identity:RequestRes.data.identity}))
                     localStorage.setItem("AuthToken", JSON.stringify({
                         "Token": RequestRes.data.token,
@@ -35,7 +34,9 @@ function Login() {
                 }
             }}></CustomButton>
             <label>Or</label>
-            <CustomButton name={"Sinup"} className={" h-10 w-10/12 sm:w-3/4 md:w-1/2"}></CustomButton>
+            <CustomButton name={"Sinup"} className={" h-10 w-10/12 sm:w-3/4 md:w-1/2"} Action={()=>{
+                navigate("/sinup")
+            }}></CustomButton>
         </div>
     </>);
 }

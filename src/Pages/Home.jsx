@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken } from "../Redux/Auth";
+import { setToken } from "../Redux/Auth.js";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
