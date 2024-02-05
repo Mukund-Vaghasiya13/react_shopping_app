@@ -1,6 +1,6 @@
 import { GrAdd } from "react-icons/gr";
 import { TbLogout } from "react-icons/tb";
-import { setToken } from "../Redux/Auth";
+import { setToken } from "../Redux/Auth.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 function Header({ token, title }) {
