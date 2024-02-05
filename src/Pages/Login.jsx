@@ -21,6 +21,8 @@ function Login() {
                 const response = await ApiService.PostData("/api/v1/Shopping/login", {
                     "username": username,
                     "password": password
+                },{
+                    "Content-Type":"application/json"
                 })
 
                 const RequestRes = response.data

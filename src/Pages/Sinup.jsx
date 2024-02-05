@@ -27,7 +27,9 @@ function Sinup() {
                         "username":username,
                         "password":password,
                     }
-                    const response = await ApiService.PostData("/api/v1/Shopping/register",sinupdata)
+                    const response = await ApiService.PostData("/api/v1/Shopping/register",sinupdata,{
+                        "Content-Type":"application/json"
+                    })
                     if(response){
                         const success = response.data.success
                         if(success){
@@ -35,7 +37,9 @@ function Sinup() {
                                 "username":username,
                                 "password":password
                             }
-                            const response = await ApiService.PostData("/api/v1/Shopping/login",logindata)
+                            const response = await ApiService.PostData("/api/v1/Shopping/login",logindata,{
+                                "Content-Type":"application/json"
+                            })
                             if(response){
                                 const responsedata = response.data
                                 if(responsedata.success){

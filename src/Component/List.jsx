@@ -1,6 +1,5 @@
 function List({list,title}) {
     return ( 
-
         <>
             <div className="max-h-full w-full p-5 flex flex-col gap-3">
                 <h1 className="text-2xl text-gray-500 font-semibold">{title}</h1>

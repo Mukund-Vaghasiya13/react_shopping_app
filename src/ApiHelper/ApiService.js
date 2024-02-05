@@ -3,14 +3,10 @@ import axios from "axios";
 
 class ApiService {
   static async PostData(url, data, Coustomheader = {}) {
-    const headers = {
-      "Content-Type": "application/json",
-      ...Coustomheader,
-    };
-
+    
     try {
       const response = await axios.post(url, data, {
-        headers: headers,
+        headers: Coustomheader,
       });
       return response;
     } catch {
