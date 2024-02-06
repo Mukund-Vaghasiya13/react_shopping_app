@@ -8,12 +8,14 @@ import Login from './Pages/Login.jsx'
 import Sinup from './Pages/Sinup.jsx'
 import { Provider } from 'react-redux'
 import { store } from './Redux/store.js'
+import Product from './Pages/Product.jsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>}>
     <Route path='' element={<Home/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='/sinup' element={<Sinup/>}/>
+    <Route path='/product/:id' element={<Product/>}/>
   </Route>
 ))
 

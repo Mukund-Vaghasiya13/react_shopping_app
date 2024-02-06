@@ -1,16 +1,27 @@
-function List({list,title}) {
+function List({list,title,ontap=null}) {
     return ( 
+
+        // TODO: Modify List
         <>
             <div className="max-h-full w-full p-5 flex flex-col gap-3">
                 <h1 className="text-2xl text-gray-500 font-semibold">{title}</h1>
                 <div className="h-full w-full">
                 { list && list.map((e)=>{
-                    return <div key={e._id} className="h-24 p-2 rounded bg-gray-200 flex justify-start gap-3">
-                        <img src={`${e.image}`} className="h-full w-19 rounded" alt={`${e.name}`}></img>
-                        <div className="h-full w-full flex justify-center items-center">
-                            <h1 className="text-2xl font-bold">{e.name}</h1>
-                        </div>
+                    return <div key={e._id} className="h-24 p-2 rounded bg-gray-200 flex justify-start gap-3" onClick={()=>{
+                        ontap && ontap(e._id)
+                    }}>
+                    <img src={`${e.image}`} className="h-full w-19 rounded" alt={`${e.name}`}></img>
+                    <div className="h-full w-full flex justify-center items-center gap-3">
+                       {
+                        e.refId ? <>
+                           <h1>{e.Productname}</h1>
+                           <h1>{e.price}</h1>
+                        </> : <>
+                            <h1>{e.name}</h1>
+                        </>
+                       }
                     </div>
+                </div>
                 })}
                 </div>
             </div>
