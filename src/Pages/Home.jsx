@@ -35,25 +35,6 @@ function Home() {
       }
     }
 
-    const CreateCategory = async (data) =>{
-      const header = {
-        "Content-Type":'multipart/form-data',
-        "Authorization":`Bearer ${token}`
-      }
-      const formData = new FormData();
-      formData.append(data)
-
-      const response = await ApiService.PostData("/api/v1/Shopping/AdminUser/GetCatagory",data,header)
-      if(response){
-        if(response.status == 201){
-          const Response = response.data
-          setCatagory(Response.data)
-        }else{
-          console.log(response.data.message)
-        }
-      }
-    }
-  
     useEffect(() => {
       const local = JSON.parse(localStorage.getItem("AuthToken"));
       
@@ -70,7 +51,7 @@ function Home() {
         <div className="h-screen w-screen felx flex-col">
           <Header token={token} title={"Catalog"} AddAction={ToggleDailog}/>
           <List list={catagory} title={"Catagory List"}></List>
-          <Dailog ref={ref} content={"Hello"} close={ToggleDailog} heading={"Heading"} fortype={"catagory"}/>
+          <Dailog ref={ref} urltouplode={"/api/v1/Shopping/Admin//Create/Catagory"} token={token} close={ToggleDailog} fortype={"catgory"} onUplodeComplete={GetListofCatagory}/>
         </div>
       </>
    )
