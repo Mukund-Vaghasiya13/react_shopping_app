@@ -5,12 +5,14 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '../Component/Header.jsx';
 import { ApiService } from '../ApiHelper/ApiService';
 import List from '../Component/List.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function Product() {
     const {id} = useParams()
     const token = useSelector((state) => state.Auth);
     const ref = useRef(null)
     const [ListProduct,setProduct] = useState([])
+    const navigate = useNavigate()
 
     function ToggleDailog(){
         ref.current.hasAttribute("open")? ref.current.close() : ref.current.showModal()
@@ -31,14 +33,18 @@ function Product() {
     }
 
     useEffect(()=>{
-        GetProduct()
-    },[token])
+        if(token.Token){
+            GetProduct()
+        }else{
+            navigate("/")
+        }
+    },[])
 
     return ( 
         <>
             <div className='h-screen w-screen flex flex-col'>
             <Header token={token} title={"Catalog"} AddAction={ToggleDailog}/>
-            <List  list={ListProduct} title={"Product List"}></List>
+            <List  list={ListProduct} title={"Product List"} token={token} OnDeleteAction={()=>{}}></List>
             <Dailog ref={ref} fortype={"product"} close={ToggleDailog} token={token} urltouplode={"/api/v1/Shopping/Admin/Create/Product"} refId={id} onUplodeComplete={GetProduct}></Dailog>
             </div>
         </>

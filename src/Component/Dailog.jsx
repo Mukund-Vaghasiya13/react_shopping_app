@@ -32,6 +32,7 @@ function Dailog(
         if (Response.success) {
           setloding(false);
           onUplodeComplete(token.Token);
+          close()
         }
       } else {
         console.log(response.data.message);
@@ -76,7 +77,9 @@ function Dailog(
             <button
               disabled={lodind}
               className="bg-black text-white active:bg-white active:text-black p-2 rounded font-bold"
-              onClick={close}
+              onClick={()=>{
+                close()
+              }}
             >
               Cancle
             </button>

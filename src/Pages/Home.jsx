@@ -8,6 +8,7 @@ import List from "../Component/List.jsx";
 import Dailog from "../Component/Dailog.jsx";
 import { useRef } from "react";
 
+
 function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -40,6 +41,29 @@ function Home() {
     }
   };
 
+  const DeleteCatagory =  async(catID)=>{
+    const header = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token.Token}`,
+    };
+
+    const deleteData = {
+      "catID":catID
+    }
+
+    const response = await ApiService.PostData("/api/v1/Shopping/Admin/Catagory/Delete",deleteData,header)
+    if (response) {
+      if (response.status == 200) {
+        const Response = response.data;
+        if(Response.success){
+          GetListofCatagory(token.Token)
+        }
+      } else {
+        console.log(response.data.message);
+      }
+    }
+  }
+
   useEffect(() => {
     const local = JSON.parse(localStorage.getItem("AuthToken"));
 
@@ -51,6 +75,8 @@ function Home() {
     }
   }, []);
 
+
+
   return (
     <>
       <div className="h-screen w-screen felx flex-col">
@@ -61,6 +87,8 @@ function Home() {
           ontap={(id) => {
             navigate(`/product/${id}`);
           }}
+          token={token}
+          OnDeleteAction={DeleteCatagory}
         ></List>
         <Dailog
           ref={ref}
