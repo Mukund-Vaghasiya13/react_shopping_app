@@ -23,7 +23,7 @@ function Product() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token.Token}`,
           };
-        const response = await ApiService.Getdata("/api/v1/Shopping/AdminUser/GetProduct",header)
+        const response = await ApiService.Getdata(`/api/v1/Shopping/AdminUser/GetProduct/${id}`,header)
         if(response.status = 200){
             const Response = response.data
             if(Response.success){
@@ -39,7 +39,7 @@ function Product() {
             navigate("/")
         }
     },[])
-
+//TODO: Is To delete product
     return ( 
         <>
             <div className='h-screen w-screen flex flex-col'>

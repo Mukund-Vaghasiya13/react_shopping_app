@@ -12,7 +12,7 @@ function List({ token, list, title, ontap = null, OnDeleteAction }) {
               return (
                 <div
                   key={e._id}
-                  className="w-full flex flex-col items-center justify-center p-2"
+                  className="w-full flex flex-col items-center justify-center p-2 bg-gray-100 rounded"
                 >
                   <div
                     className="flex flex-col items-center justify-center"
@@ -20,22 +20,22 @@ function List({ token, list, title, ontap = null, OnDeleteAction }) {
                       ontap && ontap(e._id);
                     }}
                   >
-                    <img src={`${e.image}`}></img>
+                    <img src={`${e.image}`} className="rounded"></img>
                     {e.refId ? (
                       <>
-                        <h1>{e.Productname}</h1>
-                        <h1>{e.price}</h1>
+                        <h1 className="text-2xl font-bold">{e.Productname}</h1>
+                        <h1 className="text-2xl font-bold">{e.price}</h1>
                       </>
                     ) : (
                       <>
-                        <h1>{e.name}</h1>
+                        <h1 className="text-2xl font-bold">{e.name}</h1>
                       </>
                     )}
                   </div>
                   {token.identity == "admin" ? (
                     <>
                       <CustomButton
-                        className={"h-10 w-full 2 p-2"}
+                        className={"h-14 w-full 2 p-2"}
                         name={"Delete"}
                         Action={() => {
                           OnDeleteAction(e._id);
@@ -56,24 +56,3 @@ function List({ token, list, title, ontap = null, OnDeleteAction }) {
 
 export default List;
 
-/*
-
-<div className="max-h-full w-full ">
-                <h1 className="text-2xl text-gray-500 font-semibold">{title}</h1>
-                <div className="h-full w-full">
-                { list && list.map((e)=>{
-                    return <div key={e._id} className="h-24 m-2 p-2 rounded bg-gray-200 flex justify-start gap-3">
-                   <div className="flex justify-start gap-3" >
-                    <img src={`${e.image}`} className="h-full w-19 rounded" alt={`${e.name}`}></img>
-                    <div className="h-full w-full flex justify-center items-center gap-3">
-                       
-                       
-                    </div>
-                    </div> 
-                    
-                </div>
-                })}
-                </div>
-            </div>
-
-*/
