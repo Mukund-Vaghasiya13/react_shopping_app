@@ -32,6 +32,29 @@ function Product() {
         }
     }
 
+    const DeleteProduct =  async(ProId)=>{
+        const header = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.Token}`,
+        };
+    
+        const deleteData = {
+          "ProId":ProId
+        }
+    
+        const response = await ApiService.PostData("/api/v1/Shopping/Admin/Catagory/Product/Delete",deleteData,header)
+        if (response) {
+          if (response.status == 200) {
+            const Response = response.data;
+            if(Response.success){
+                GetProduct()
+            }
+          } else {
+            console.log(response.data.message);
+          }
+        }
+      }
+
     useEffect(()=>{
         if(token.Token){
             GetProduct()
@@ -39,12 +62,11 @@ function Product() {
             navigate("/")
         }
     },[])
-//TODO: Is To delete product
     return ( 
         <>
             <div className='h-screen w-screen flex flex-col'>
             <Header token={token} title={"Catalog"} AddAction={ToggleDailog}/>
-            <List  list={ListProduct} title={"Product List"} token={token} OnDeleteAction={()=>{}}></List>
+            <List  list={ListProduct} title={"Product List"} token={token} OnDeleteAction={DeleteProduct}></List>
             <Dailog ref={ref} fortype={"product"} close={ToggleDailog} token={token} urltouplode={"/api/v1/Shopping/Admin/Create/Product"} refId={id} onUplodeComplete={GetProduct}></Dailog>
             </div>
         </>
