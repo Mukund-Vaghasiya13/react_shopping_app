@@ -11,11 +11,11 @@ const Cart = createSlice({
             const {name,price} = action.payload
             state.product.push({name:name,price:price})
         },
-        deleteProduct:(state,action)=>{
-            // myArray.splice(1, 1);
-            const index = action.payload
-            state.product.slice(index,1)
+        deleteProduct: (state, action) => {
+            const index = action.payload;
+            state.product = state.product.filter((item, idx) => idx !== index);
         }
+        
     }
 })
 

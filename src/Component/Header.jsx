@@ -4,10 +4,12 @@ import { setToken } from "../Redux/Auth.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 function Header({ token, title, AddAction }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const Cart = useSelector((state) => state.Cart);
 
   return (
     <>
@@ -16,13 +18,17 @@ function Header({ token, title, AddAction }) {
         <div className="flex items-center gap-5">
           {title != "Cart" && (
             <>
-              <button
-                onClick={() => {
-                  navigate("/cart");
-                }}
-              >
-                <FaCartShopping size={30} />
-              </button>
+              {Cart.product.length != 0 && (
+                <>
+                  <button
+                    onClick={() => {
+                      navigate("/cart");
+                    }}
+                  >
+                    <FaCartShopping size={30} />
+                  </button>
+                </>
+              )}
             </>
           )}
           {token && token.identity == "admin" ? (

@@ -84,7 +84,9 @@ function Home() {
         <Header token={token} title={"Catalog"} AddAction={ToggleDailog} />
 
         <div className="w-full p-5 flex flex-col gap-3">
-          <h1 className="text-2xl text-gray-500 font-semibold">Catagory List</h1>
+          <h1 className="text-2xl text-gray-500 font-semibold">
+            Catagory List
+          </h1>
           <div className="w-full grid grid-cols-1 sd:grid-cols-2 md:grid-cols-3 gap-3">
             {catagory &&
               catagory.map((e) => {
@@ -111,7 +113,7 @@ function Home() {
                           className={"h-16 w-full p-2"}
                           name={"Delete"}
                           Action={() => {
-                            DeleteCatagory(e._id)
+                            DeleteCatagory(e._id);
                           }}
                         ></CustomButton>
                       </>
