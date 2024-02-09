@@ -4,10 +4,9 @@ import { setToken } from "../Redux/Auth.js";
 import { useNavigate } from "react-router-dom";
 import Header from "../Component/Header.jsx";
 import { ApiService } from "../ApiHelper/ApiService.js";
-import List from "../Component/List.jsx";
 import Dailog from "../Component/Dailog.jsx";
 import { useRef } from "react";
-
+import CustomButton from "../Component/Button.jsx";
 
 function Home() {
   const navigate = useNavigate();
@@ -41,28 +40,32 @@ function Home() {
     }
   };
 
-  const DeleteCatagory =  async(catID)=>{
+  const DeleteCatagory = async (catID) => {
     const header = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token.Token}`,
     };
 
     const deleteData = {
-      "catID":catID
-    }
+      catID: catID,
+    };
 
-    const response = await ApiService.PostData("/api/v1/Shopping/Admin/Catagory/Delete",deleteData,header)
+    const response = await ApiService.PostData(
+      "/api/v1/Shopping/Admin/Catagory/Delete",
+      deleteData,
+      header
+    );
     if (response) {
       if (response.status == 200) {
         const Response = response.data;
-        if(Response.success){
-          GetListofCatagory(token.Token)
+        if (Response.success) {
+          GetListofCatagory(token.Token);
         }
       } else {
         console.log(response.data.message);
       }
     }
-  }
+  };
 
   useEffect(() => {
     const local = JSON.parse(localStorage.getItem("AuthToken"));
@@ -75,21 +78,52 @@ function Home() {
     }
   }, []);
 
-
-
   return (
     <>
       <div className="h-screen w-screen felx flex-col">
         <Header token={token} title={"Catalog"} AddAction={ToggleDailog} />
-        <List
-          list={catagory}
-          title={"Catagory List"}
-          ontap={(id) => {
-            navigate(`/product/${id}`);
-          }}
-          token={token}
-          OnDeleteAction={DeleteCatagory}
-        ></List>
+
+        <div className="w-full p-5 flex flex-col gap-3">
+          <h1 className="text-2xl text-gray-500 font-semibold">Catagory List</h1>
+          <div className="w-full grid grid-cols-1 sd:grid-cols-2 md:grid-cols-3 gap-3">
+            {catagory &&
+              catagory.map((e) => {
+                return (
+                  <div
+                    key={e._id}
+                    className="w-full flex flex-col items-center justify-center p-2 bg-gray-100 rounded"
+                  >
+                    <div
+                      className="w-full h-full flex flex-col items-center justify-center"
+                      onClick={() => {
+                        navigate(`/product/${e._id}`);
+                      }}
+                    >
+                      <img
+                        src={`${e.image}`}
+                        className="h-4/5 w-full object-fill rounded"
+                      ></img>
+                      <h1 className="text-2xl font-bold">{e.name}</h1>
+                    </div>
+                    {token.identity == "admin" ? (
+                      <>
+                        <CustomButton
+                          className={"h-16 w-full p-2"}
+                          name={"Delete"}
+                          Action={() => {
+                            DeleteCatagory(e._id)
+                          }}
+                        ></CustomButton>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+
         <Dailog
           ref={ref}
           urltouplode={"/api/v1/Shopping/Admin/Create/Catagory"}
