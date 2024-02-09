@@ -2,7 +2,7 @@ import { useSelector,useDispatch } from "react-redux";
 import CustomButton from "../Component/Button";
 import Header from "../Component/Header";
 import { useEffect, useState } from "react";
-import { deleteProduct } from "../Redux/Cart.js";
+import { deleteProduct } from "../Redux/CartModle.js";
 import { useNavigate } from "react-router-dom";
 
 

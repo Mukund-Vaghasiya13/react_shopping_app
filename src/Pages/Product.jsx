@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from "../Component/Header.jsx";
 import { ApiService } from "../ApiHelper/ApiService";
 import { useNavigate } from "react-router-dom";
-import { addProduct } from "../Redux/Cart.js";
+import { addProduct } from "../Redux/CartModle.js";
 import CustomButton from "../Component/Button.jsx";
 
 
@@ -80,7 +80,7 @@ function Product() {
         <Header token={token} title={"Catalog"} AddAction={ToggleDailog} />
         <div className="w-full p-5 flex flex-col gap-3">
           <h1 className="text-2xl text-gray-500 font-semibold">Product List</h1>
-          <div className="w-full grid grid-cols-1 sd:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="w-full grid grid-cols-2 sd:grid-cols-3 md:grid-cols-4 gap-4">
             {ListProduct &&
               ListProduct.map((e) => {
                 return (
@@ -93,38 +93,35 @@ function Product() {
                         src={`${e.image}`}
                         className="h-4/5 w-full object-fill rounded"
                       ></img>
-                      <div className="w-full flex justify-between items-center p-2">
-                        <h1 className="text-2xl font-bold">{e.Productname}</h1>
-                        <h1 className="text-2xl font-bold">{`$ ${e.price}`}</h1>
+                      <div className="w-full flex flex-col justify-between items-center p-2">
+                        <h1 className="text-xl font-bold">{e.Productname}</h1>
+                        <h1 className="text-xl font-bold">{`\$${e.price}`}</h1>
                       </div>
                     </div>
-                    {token.identity == "admin" ? (
-                      <>
-                          <div className="flex justify-center w-full h-16">
+                    
+                     
+                          <div className="w-full h-16">
+                          {token.identity == "admin" ? (
                             <CustomButton
-                              className={"h-full w-1/2 p-2"}
+                              className={"h-full w-full p-2"}
                               name={"Delete"}
                               Action={() => {
                                 DeleteProduct(e._id)
                               }}
                             />
-                            <CustomButton
+                            ) : (
+                             
+                              <CustomButton
+                              className={"h-full w-full p-2"}
                               name={"Add to Cart"}
-                              className={"h-full w-1/2 p-2"}
                               Action={() => {
-                                dispatch(
-                                  addProduct({
-                                    name: e.Productname,
-                                    price: e.price,
-                                  })
-                                );
+                                dispatch(addProduct({name:e.Productname,price:e.price}))
                               }}
-                            />
+                             />
+                            )}
                           </div>
-                      </>
-                    ) : (
-                      <></>
-                    )}
+                    <div className="">
+                    </div>
                   </div>
                 );
               })}
