@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setToken } from "../Redux/Auth.js";
 import TextField from "../Component/TextField.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomButton from "../Component/Button.jsx";
 import { ApiService } from "../ApiHelper/ApiService.js";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,13 @@ function Login() {
     const [password, setPassword] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        const local = JSON.parse(localStorage.getItem("AuthToken"));
+        if(local){
+            navigate("/")
+        }
+    },[])
 
     return (<>
         <div className="h-screen flex flex-col items-center justify-center gap-3">

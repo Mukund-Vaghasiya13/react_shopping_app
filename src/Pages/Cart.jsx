@@ -30,14 +30,14 @@ function ProductCart() {
         <>
             <Header title={"Cart"}/>
            <div className="w-screen h-dvh flex flex-col justify-center items-center">
-            <div className="w-full h-1/2 flex flex-col justify-center p-2 items-center overflow-scroll gap-3">
+            <div className="w-full h-1/2 flex flex-col justify-center p-5 items-center overflow-scroll gap-3">
             {
             Cart.product && Cart.product.map((e,i)=>{
 
                 return (
-                    <div key={i} className="w-10/12 md:w-1/2 h-20 flex justify-between items-center bg-gray-300 rounded p-2">
+                    <div key={i} className="w-10/12 md:w-1/2 h-16 flex justify-between items-center bg-gray-300 rounded p-2">
                        <div className="flex flex-col font-bold">
-                       <h1 className="text-3xl ">{e.name}</h1>
+                       <h1 className="text-2xl ">{e.name}</h1>
                        <h1>{`\$${e.price}`}</h1>
                        </div>
                        <CustomButton name={"Remove"} className={"h-10 w-36"} Action={()=>{

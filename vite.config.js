@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server:{
     proxy:{
-      "/api/v1/Shopping":"http://localhost:3000"
+      "/api/v1/Shopping":"https://soppingapp.onrender.com"
     }
   }
 })
