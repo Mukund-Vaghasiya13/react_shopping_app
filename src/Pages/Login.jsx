@@ -24,8 +24,7 @@ function Login() {
                 },{
                     "Content-Type":"application/json"
                 })
-
-                const RequestRes = response.data
+                const RequestRes = response?.data
                 if (RequestRes.success) {
                     dispatch(setToken({Token:RequestRes.data.token,identity:RequestRes.data.identity}))
                     localStorage.setItem("AuthToken", JSON.stringify({
