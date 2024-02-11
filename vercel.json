@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" },
     {
-      "source": "/api/v1/(Shopping.*)",
+      "source": "/api",
       "destination": "https://soppingapp.onrender.com"
     }
   ]
