@@ -1,9 +1,6 @@
 {
-    "routes":[
-        {
-            "src":"/(.*)",
-            "dest":"/index.html"
-        }
-    ]
-    
+  "routes": [
+    { "src": "/api/(.*)", "dest": "https://todo-xiii.onrender.com/api/$1" },
+    { "src": "/(.*)", "dest": "/" }
+  ]
 }
