@@ -1,14 +1,9 @@
 {
-    "rewrites": [
-        {
-            "source":"/api/v1/(.*)",
-            "destination": "https://soppingapp.onrender.com"
-        }
-    ],
     "routes":[
         {
             "src":"/(.*)",
             "dest":"/index.html"
         }
     ]
+    
 }
