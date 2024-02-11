@@ -13,13 +13,6 @@ function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        const local = JSON.parse(localStorage.getItem("AuthToken"));
-        if(local){
-            navigate("/")
-        }
-    },[])
-
     return (<>
         <div className="h-screen flex flex-col items-center justify-center gap-3">
             <TextField type={"text"} placeholder={"Enter username"} lable={"Username"} setValue={setusername} />

@@ -28,9 +28,9 @@ function ProductCart() {
 
     return ( 
         <>
+            <div className="w-screen flex flex-col justify-center items-center ">
             <Header title={"Cart"}/>
-           <div className="w-screen h-dvh flex flex-col justify-center items-center">
-            <div className="w-full h-1/2 flex flex-col justify-center p-5 items-center overflow-scroll gap-3">
+            <div className="w-full flex flex-col justify-center p-5 items-center gap-3">
             {
             Cart.product && Cart.product.map((e,i)=>{
 
