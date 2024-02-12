@@ -1,9 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" },
-    {
-      "source": "/api",
-      "destination": "https://soppingapp.onrender.com"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
