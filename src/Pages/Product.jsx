@@ -29,7 +29,7 @@ function Product() {
       Authorization: `Bearer ${token.Token}`,
     };
     const response = await ApiService.Getdata(
-      `/api/v1/Shopping/AdminUser/GetProduct/${id}`,
+      `https://soppingapp.onrender.com/api/v1/Shopping/AdminUser/GetProduct/${id}`,
       header
     );
     if ((response.status = 200)) {
@@ -51,7 +51,7 @@ function Product() {
     };
 
     const response = await ApiService.PostData(
-      "/api/v1/Shopping/Admin/Catagory/Product/Delete",
+      "https://soppingapp.onrender.com/api/v1/Shopping/Admin/Catagory/Product/Delete",
       deleteData,
       header
     );
@@ -132,7 +132,7 @@ function Product() {
           fortype={"product"}
           close={ToggleDailog}
           token={token}
-          urltouplode={"/api/v1/Shopping/Admin/Create/Product"}
+          urltouplode={"https://soppingapp.onrender.com/api/v1/Shopping/Admin/Create/Product"}
           refId={id}
           onUplodeComplete={GetProduct}
         ></Dailog>

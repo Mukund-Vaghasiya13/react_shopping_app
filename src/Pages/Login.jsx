@@ -18,7 +18,7 @@ function Login() {
             <TextField type={"text"} placeholder={"Enter username"} lable={"Username"} setValue={setusername} />
             <TextField type={"password"} placeholder={"Enter Password"} lable={"Password"} setValue={setPassword} />
             <CustomButton name={"Login"} className={" h-10 w-10/12 sm:w-3/4 md:w-1/2"} Action={async () => {
-                const response = await ApiService.PostData("/api/v1/Shopping/login", {
+                const response = await ApiService.PostData("https://soppingapp.onrender.com/api/v1/Shopping/login", {
                     "username": username,
                     "password": password
                 },{

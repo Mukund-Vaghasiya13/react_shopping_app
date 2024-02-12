@@ -27,7 +27,7 @@ function Home() {
       Authorization: `Bearer ${token}`,
     };
     const response = await ApiService.Getdata(
-      "/api/v1/Shopping/AdminUser/GetCatagory",
+      "https://soppingapp.onrender.com/api/v1/Shopping/AdminUser/GetCatagory",
       header
     );
     if (response) {
@@ -51,7 +51,7 @@ function Home() {
     };
 
     const response = await ApiService.PostData(
-      "/api/v1/Shopping/Admin/Catagory/Delete",
+      "https://soppingapp.onrender.com/api/v1/Shopping/Admin/Catagory/Delete",
       deleteData,
       header
     );
