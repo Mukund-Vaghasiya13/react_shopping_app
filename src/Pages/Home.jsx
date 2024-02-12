@@ -87,7 +87,7 @@ function Home() {
           <h1 className="text-2xl text-gray-500 font-semibold">
             Catagory List
           </h1>
-          <div className="w-full grid grid-cols-1 sd:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="w-full grid grid-cols-2 sd:grid-cols-3 md:grid-cols-4 gap-3">
             {catagory &&
               catagory.map((e) => {
                 return (
