@@ -1,5 +1,6 @@
 import { forwardRef, useState } from "react";
 import { ApiService } from "../ApiHelper/ApiService";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Dailog(
   { token, close, fortype, urltouplode, onUplodeComplete, refId = null },
@@ -35,6 +36,7 @@ function Dailog(
           close()
         }
       } else {
+        setloding(false)
         console.log(response.data.message);
       }
     }
@@ -73,6 +75,9 @@ function Dailog(
           ) : (
             <></>
           )}
+          <div className="flex justify-center items-center">
+          <ClipLoader color="#080909" />
+          </div>
           <div className="flex gap-3">
             <button
               disabled={lodind}
