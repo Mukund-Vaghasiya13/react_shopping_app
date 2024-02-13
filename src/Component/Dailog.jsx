@@ -36,9 +36,10 @@ function Dailog(
           close()
         }
       } else {
-        setloding(false)
         console.log(response.data.message);
       }
+    }else{
+      setloding(false)
     }
   };
 
