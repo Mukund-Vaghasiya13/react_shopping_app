@@ -76,7 +76,7 @@ function Dailog(
             <></>
           )}
           <div className="flex justify-center items-center">
-          <ClipLoader color="#080909" />
+          <ClipLoader color="#080909" loading={lodind}/>
           </div>
           <div className="flex gap-3">
             <button
