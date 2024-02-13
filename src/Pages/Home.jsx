@@ -128,7 +128,7 @@ function Home() {
 
         <Dailog
           ref={ref}
-          urltouplode={"/api/v1/Shopping/Admin/Create/Catagory"}
+          urltouplode={"https://soppingapp.onrender.com/api/v1/Shopping/Admin/Create/Catagory"}
           token={token}
           close={ToggleDailog}
           fortype={"catgory"}
