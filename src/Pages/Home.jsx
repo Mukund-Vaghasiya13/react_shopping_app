@@ -105,7 +105,7 @@ function Home() {
                         src={`${e.image}`}
                         className="h-4/5 w-full object-fill rounded"
                       ></img>
-                      <h1 className="text-2xl font-bold">{e.name}</h1>
+                      <h1 className="text-xl md:text-2xl font-bold">{e.name}</h1>
                     </div>
                     {token.identity == "admin" ? (
                       <>
