@@ -27,7 +27,7 @@ function Sinup() {
                         "username":username,
                         "password":password,
                     }
-                    const response = await ApiService.PostData("/api/v1/Shopping/register",sinupdata,{
+                    const response = await ApiService.PostData("https://soppingapp.onrender.com/api/v1/Shopping/register",sinupdata,{
                         "Content-Type":"application/json"
                     })
                     if(response){
